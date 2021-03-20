@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "782400950294",
+    "project_id": "ecommerceapp-62dfd",
+    "storage_bucket": "ecommerceapp-62dfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782400950294:android:375e3e73d040e21b446537",
+        "android_client_info": {
+          "package_name": "com.advait.ecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782400950294-6fn34863jtrtah8b9n6ur4jj47ncp42n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.advait.ecommerceapp",
+            "certificate_hash": "87190a4821321808642bdba0b0c25a1aba169781"
+          }
+        },
+        {
+          "client_id": "782400950294-m4r97sldmgo92mf25inb2542pcvtmg1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqyYeGTLbMH7R8r7rdyHoGoC6vO-Z86BI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782400950294-m4r97sldmgo92mf25inb2542pcvtmg1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
