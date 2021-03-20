@@ -2,8 +2,12 @@ package com.advait.ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+
+import com.advait.ecommerceapp.Login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,5 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
         joinNowBtn = (Button) findViewById(R.id.main_join_now__btn);
         loginBtn = (Button) findViewById(R.id.main_login_btn);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
