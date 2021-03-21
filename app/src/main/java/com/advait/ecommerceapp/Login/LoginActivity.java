@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.advait.ecommerceapp.Admin.AdminAddNewProductActivity;
+import com.advait.ecommerceapp.Admin.AdminCategoryActivity;
 import com.advait.ecommerceapp.HomeActivity;
 import com.advait.ecommerceapp.Model.Users;
 import com.advait.ecommerceapp.Prevalent.Prevalent;
@@ -120,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(parentDbName.equals("Admins")){
                                 Toast.makeText(LoginActivity.this, "Admin Saahab, Ghus Gaye Succesfully!", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent intent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
                                 startActivity(intent);
                             }else if(parentDbName.equals("Users")){
                                 Toast.makeText(LoginActivity.this, "Ghus Gaye Succesfully!", Toast.LENGTH_SHORT).show();
