@@ -49,4 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database'
 
+    //Paper library for memory storing
+    implementation 'io.paperdb:paperdb:2.7.1'
+
 }
