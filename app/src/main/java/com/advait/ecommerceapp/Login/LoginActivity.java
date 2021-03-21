@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.advait.ecommerceapp.Admin.AdminAddNewProductActivity;
 import com.advait.ecommerceapp.HomeActivity;
 import com.advait.ecommerceapp.Model.Users;
 import com.advait.ecommerceapp.Prevalent.Prevalent;
@@ -32,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private ProgressDialog loadingBar;
     private CheckBox chkBoxRememberMe;
+    private TextView adminLink, notAdminLink;
 
     private String parentDbName = "Users";
 
@@ -45,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.login_password_input);
         loginBtn = (Button) findViewById(R.id.login_btn);
         loadingBar = new ProgressDialog(this);
+        adminLink = (TextView) findViewById(R.id.admin_panel_link);
+        notAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chk);
         Paper.init(this);
 
@@ -53,6 +58,27 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 hideSoftKeyboard();
                 loginUser();
+            }
+        });
+
+        adminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginBtn.setText("Login Admin");
+                adminLink.setVisibility(View.INVISIBLE);
+                notAdminLink.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+                Toast.makeText(LoginActivity.this, "Goli Beta Masti naiii!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        notAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginBtn.setText("Login Krlo Lyo");
+                adminLink.setVisibility(View.VISIBLE);
+                notAdminLink.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
             }
         });
     }
@@ -91,12 +117,20 @@ public class LoginActivity extends AppCompatActivity {
                     Users usersData = snapshot.child(parentDbName).child(phone).getValue(Users.class);
                     if(usersData.getPhone().equals(phone)){
                         if(usersData.getPassword().equals(password)){
-                            Toast.makeText(LoginActivity.this, "Ghus Gaye Succesfully!", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                            if(parentDbName.equals("Admins")){
+                                Toast.makeText(LoginActivity.this, "Admin Saahab, Ghus Gaye Succesfully!", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
+                                startActivity(intent);
+                            }else if(parentDbName.equals("Users")){
+                                Toast.makeText(LoginActivity.this, "Ghus Gaye Succesfully!", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            }
                         }else{
                             loadingBar.dismiss();
+                            inputPassword.setText("");
                             Toast.makeText(LoginActivity.this, "Password Sahi Daal re baaba!!", Toast.LENGTH_SHORT).show();
                         }
                     }
