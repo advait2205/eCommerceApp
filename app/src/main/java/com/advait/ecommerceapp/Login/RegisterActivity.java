@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         createAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideSoftKeyboard();
                 createAccount();
             }
         });
@@ -73,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    //Validating phone number to check whether is exists in database or not befoire regsitering..
     private void validatePhoneNumber(String name, String phone, String password) {
         final DatabaseReference rootRef;
         rootRef = FirebaseDatabase.getInstance().getReference();
@@ -114,5 +117,11 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void hideSoftKeyboard(){
+        if(getCurrentFocus() != null){
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+        }
     }
 }
