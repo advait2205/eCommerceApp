@@ -93,7 +93,7 @@
         android:padding="17dp"
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:text="Banalo Account Lyo"
+        android:text="Login Krlo Lyo"
         android:textColor="@color/white"/>
 
     <TextView
